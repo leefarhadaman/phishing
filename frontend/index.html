@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Simulator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJw2f6r7k1f5e8Afp5VjFv7bXQ7Zv4vYb3kW3Xbxt88gl4Ygl0k7eTiz5Gv9" crossorigin="anonymous">
+</head>
+<body>
+
+<!-- Container for the content -->
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Phishing Simulation Tool</h1>
+
+    <!-- Phishing Email Content -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title">Important Security Update</h2>
+            <p class="card-text">We have detected suspicious activity in your account. Please verify your identity by clicking the link below:</p>
+            <a href="#" id="phishingLink" class="btn btn-danger">Click here to secure your account</a>
+        </div>
+    </div>
+
+    <!-- Form to Send Phishing Emails -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3 class="card-title">Send Phishing Emails</h3>
+            <form id="emailForm">
+                <div class="mb-3">
+                    <label for="numEmails" class="form-label">Number of Emails to Send:</label>
+                    <input type="number" class="form-control" id="numEmails" placeholder="Enter number of emails" min="1" required>
+                </div>
+                <button type="submit" id="sendEmails" class="btn btn-primary w-100">Send Emails</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Form to Send Phishing SMS -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3 class="card-title">Send Phishing SMS</h3>
+            <form id="smsForm">
+                <div class="mb-3">
+                    <label for="smsNumbers" class="form-label">Phone Numbers (Comma Separated):</label>
+                    <input type="text" class="form-control" id="smsNumbers" placeholder="Enter phone numbers" required>
+                </div>
+                <div class="mb-3">
+                    <label for="numSMS" class="form-label">Number of SMS to Send:</label>
+                    <input type="number" class="form-control" id="numSMS" placeholder="Enter number of SMS" min="1" required>
+                </div>
+                <button type="submit" id="sendSMS" class="btn btn-warning w-100">Send SMS</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Learn about Phishing Button -->
+    <button id="learnButton" class="btn btn-info w-100 mt-4">Learn About Phishing</button>
+</div>
+
+<!-- Bootstrap JS and Dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0pQe5ce2ISn6s2+PHqKc39DlhrXrjgzVZ9b1U9j6grn6+Egt" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript to handle form interactions -->
+<script>
+    document.getElementById('learnButton').addEventListener('click', function() {
+        alert('Phishing is a type of cyber attack where an attacker attempts to trick users into providing sensitive information, such as usernames, passwords, and credit card numbers, by pretending to be a trustworthy entity.');
+    });
+
+    // Handle phishing email sending
+    document.getElementById('emailForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const numEmails = document.getElementById('numEmails').value;
+        alert(`Sending ${numEmails} phishing emails...`);
+        // Here you would call your backend to send the emails
+    });
+
+    // Handle phishing SMS sending
+    document.getElementById('smsForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const smsNumbers = document.getElementById('smsNumbers').value;
+        const numSMS = document.getElementById('numSMS').value;
+        alert(`Sending ${numSMS} phishing SMS to ${smsNumbers}...`);
+        // Here you would call your backend to send the SMS
+    });
+</script>
+
+</body>
+</html>
